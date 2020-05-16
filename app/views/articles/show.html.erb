@@ -1,3 +1,12 @@
+<% if @article.discarded_at? %>
+    <div id="article_discarded_warning">
+      <h2> This article has been discarded.</h2>
+      <p>
+        <%= link_to "Restore Article", article_restore_path(@article), method: :patch %>
+      </p>
+    </div>
+  <%end%>
+
 <p>
   <strong>Title:</strong>
   <%= @article.title %>

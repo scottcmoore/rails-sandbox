@@ -38,10 +38,17 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
+    @article.discard
     redirect_to articles_path
   end
 
+  # Reverts a soft delete
+  def restore
+    @article = Article.find(params[:article_id])
+    @article.undiscard
+    redirect_to @article
+  end
+  
   private
 
   def article_params

@@ -11,6 +11,14 @@
       </ul>
     </div>
   <% end %>
+  <% if @article.discarded_at.present? %>
+    <div id="article_discarded_warning">
+      <h2> This article has been discarded.</h2>
+      <p>
+        <%= link_to 'Restore Article', restore_article_path(article) %>
+      </p>
+    </div>
+  <%end%>
 
   <p>
     <%= form.label :title %><br>
