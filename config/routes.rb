@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :articles do
-      patch 'restore'
+    patch 'restore'
+    resources :comments
   end
 
   root 'welcome#index'
