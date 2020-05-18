@@ -1,9 +1,19 @@
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+<% if comment.discarded_at? %>
+  <div id="article_discarded_warning">
+    <h3> This comment has been discarded.</h2>
+  </div>
+<%end%>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+
+<p>
+  <%= link_to 'Discard Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
