@@ -1,11 +1,11 @@
 <% if @article.discarded_at? %>
-    <div id="article_discarded_warning">
-      <h2> This article has been discarded.</h2>
-      <p>
-        <%= link_to "Restore Article", article_restore_path(@article), method: :patch %>
-      </p>
-    </div>
-  <%end%>
+  <div id="article_discarded_warning">
+    <h2> This article has been discarded.</h2>
+    <p>
+      <%= link_to "Restore Article", article_restore_path(@article), method: :patch %>
+    </p>
+  </div>
+<%end%>
 
 <p>
   <strong>Title:</strong>
@@ -18,7 +18,7 @@
 </p>
 
 <h2>Comments</h2>
-<%= render @article.comments %>
+<%= render @article.comments.kept %>
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>

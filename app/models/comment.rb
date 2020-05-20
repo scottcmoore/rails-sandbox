@@ -1,6 +1,14 @@
 class Comment < ApplicationRecord
+  include Discard::Model
+
   belongs_to :article
   before_save :equivalent_value_comment
+
+  scope :kept, -> { undiscarded.joins(:article).merge(Article.kept) }
+
+  def kept?
+    undiscarded? && Article.kept?
+  end
 
   # Never read the comments.
   def equivalent_value_comment
